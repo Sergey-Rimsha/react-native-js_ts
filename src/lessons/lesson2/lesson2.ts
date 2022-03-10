@@ -293,6 +293,7 @@ console.log(superSum(3)(2,5)(3,9)) //10
 
 
 
+
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
