@@ -1,4 +1,7 @@
+
+
 console.log('lesson 2');
+
 
 // Lexical environment
 // http://jsflow.org/docs/lex-env/
@@ -266,30 +269,31 @@ console.log('lesson 2');
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
 
-function superSum(num: number): Function {
-    if (num <= 0) return () => 0;
-    if (num === 1) return (n: number) => n;
-
-    let _args: number[] = [];
-
-    function helper(...args: number[]) {
-        _args = [..._args, ...args];
-        if ( _args.length  >= num ) {
-            _args.length = num;
-            return _args.reduce( (acc, number) => acc + number);
-        } else {
-            return helper;
-        }
-    }
-
-    return helper;
-}
-
-console.log(superSum(3)(2)(5)(3)) //10
-console.log(superSum(3)(2)(5,3)) //10
-console.log(superSum(3)(2,5,3)) //10
-console.log(superSum(3)(2,5)(3) )//10
-console.log(superSum(3)(2,5)(3,9)) //10
+// function superSum(num: number): Function {
+//     if (num <= 0) return () => 0;
+//     if (num === 1) return (n: number) => n;
+//
+//
+//     let _args: number[] = [];
+//
+//     function helper(...args: number[]) {
+//         _args = [..._args, ...args];
+//         if ( _args.length  >= num ) {
+//             _args.length = num;
+//             return _args.reduce( (acc, number) => acc + number);
+//         } else {
+//             return helper;
+//         }
+//     }
+//
+//     return helper;
+// }
+//
+// console.log(superSum(3)(2)(5)(3)) //10
+// console.log(superSum(3)(2)(5,3)) //10
+// console.log(superSum(3)(2,5,3)) //10
+// console.log(superSum(3)(2,5)(3) )//10
+// console.log(superSum(3)(2,5)(3,9)) //10
 
 
 
@@ -297,8 +301,101 @@ console.log(superSum(3)(2,5)(3,9)) //10
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
+// function pow(x:number, n: number): number {
+//     if (n === 1) {
+//         return x;
+//     } else {
+//         return x * pow(x, n -1)
+//     }
+// }
+//
+// console.log(pow(2, 3));
+// console.log(pow(2, 2));
+// console.log(pow(2, 1));
+
+// let company = { // тот же самый объект, сжатый для краткости
+//     sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
+//     development: {
+//         sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
+//         internals: [{name: 'Jack', salary: 1300}]
+//     }
+// };
+//
+// // Функция для подсчёта суммы зарплат
+// function sumSalaries(department: any) {
+//     if (Array.isArray(department)) { // случай (1)
+//         console.log('случ 1');
+//         return department.reduce((prev, current) => prev + current.salary, 0); // сумма элементов массива
+//     } else { // случай (2)
+//         let sum = 0;
+//         for (let subdep of Object.values(department)) {
+//
+//             console.log(Object.values(department));
+//             console.log('случ 2');
+//             sum += sumSalaries(subdep); // рекурсивно вызывается для подотделов, суммируя результаты
+//         }
+//         return sum;
+//     }
+// }
+//
+// console.log(sumSalaries(company));
+
+// task 5.1 -> Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
+
+// function sumTo(n: number): any {
+//     if (n === 1) return n;
+//     return n + sumTo(n - 1);
+// }
+//
+// console.log(sumTo(100));
+
+// task 5.2 -> Вычислить факториал
+
+// function fakt(f: number): any {
+//     if (f === 1) return f;
+//     return f * fakt(f - 1);
+// }
+//
+// console.log(fakt(5));
+// console.log(fakt(4));
+
+// task 5.3 -> Вычислить число Фибоначи
+
+// function fib(n: number): any {
+//     return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+//     // if (f <= 1) return f;
+//     // return fib(f - 1) + fib(f - 2);
+// }
+//
+// console.log(fib(3));
+// console.log(fib(5));
+
+
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
+const arr4: any = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+const arrQqq: any = [1,5, [10,52], 7];
+
+
+
+function floatArr(arr: Array<number>) {
+    let newArr: Array<number> = [];
+    arr.map(el => {
+        if(Array.isArray(el)) {
+            return newArr = [...newArr, ...floatArr(el)]
+        } else {
+            return newArr.push(el)
+        }
+    })
+    return newArr;
+}
+
+console.log(floatArr(arr4));
+console.log(floatArr(arrQqq));
 // just a plug
 export default () => {};
+
+// export const lesson2 = () => {
+//     return
+// }
