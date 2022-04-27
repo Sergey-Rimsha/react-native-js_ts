@@ -374,25 +374,25 @@ console.log('lesson 2');
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
-const arr4: any = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
-const arrQqq: any = [1,5, [10,52], 7];
-
-
-
-function floatArr(arr: Array<number>) {
-    let newArr: Array<number> = [];
-    arr.map(el => {
-        if(Array.isArray(el)) {
-            return newArr = [...newArr, ...floatArr(el)]
-        } else {
-            return newArr.push(el)
-        }
-    })
-    return newArr;
-}
-
-console.log(floatArr(arr4));
-console.log(floatArr(arrQqq));
+// const arr4: any = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+// const arrQqq: any = [1,5, [10,52], 7];
+//
+//
+//
+// function floatArr(arr: Array<number>) {
+//     let newArr: Array<number> = [];
+//     arr.map(el => {
+//         if(Array.isArray(el)) {
+//             return newArr = [...newArr, ...floatArr(el)]
+//         } else {
+//             return newArr.push(el)
+//         }
+//     })
+//     return newArr;
+// }
+//
+// console.log(floatArr(arr4));
+// console.log(floatArr(arrQqq));
 // just a plug
 export default () => {};
 

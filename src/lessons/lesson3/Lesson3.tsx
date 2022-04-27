@@ -23,6 +23,7 @@ const Lesson3 = () => {
         try {
             const { data } = await API.searchFilmsByTitle(searchName);
             const { Search, Error, Response } = data;
+            console.log(data)
             Response === 'True' ? setSerachResult(JSON.stringify(Search)) : setSerachResult(Error);
         } catch (err) {
             console.log('err ', err);
@@ -32,6 +33,18 @@ const Lesson3 = () => {
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
         API.searchFilmsByType(searchNameByType, type)
+    }
+
+    const getPage = () => {
+        API.getPage('Name' ,100)
+            .then((res) => {
+                console.log(res.data.Search)
+            })
+        API.getPage('Name' ,99)
+            .then((res) => {
+                console.log(res.data.Search)
+            })
+
     }
 
     return (
@@ -54,6 +67,9 @@ const Lesson3 = () => {
                 <button onClick={searchByType} data-t='series'>Series</button>
                 <div>
                     {serachResultByType}
+                </div>
+                <div>
+                    <button onClick={getPage} >Get page</button>
                 </div>
             </div>
         </div>
