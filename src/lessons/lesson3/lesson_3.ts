@@ -342,30 +342,62 @@ console.log('lesson 3');
 //         }
 //     )
 
-console.log('START')
+// console.log('START')
+//
+//
+// let prom = new Promise((resolve, reject) => {
+//     console.log('START PROMISE')
+//     setTimeout((response) => {
+//         console.log('START SETTIMEOUT')
+//         if (response.httpStatus >= 200 && response.httpStatus < 400) {
+//             resolve(response.data);
+//         } else {
+//             reject(response.error);
+//         }
+//     }, 2000, {httpStatus: 200, data: {id: '45dsfsd4f'}, error: {}});
+//     console.log('END PROMISE')
+// });
+//
+// console.log('MIDDLE')
+//
+// prom
+//     .then(console.log)
+//
+// console.log('END')
 
 
-let prom = new Promise((resolve, reject) => {
-    console.log('START PROMISE')
-    setTimeout((response) => {
-        console.log('START SETTIMEOUT')
-        if (response.httpStatus >= 200 && response.httpStatus < 400) {
-            resolve(response.data);
-        } else {
-            reject(response.error);
-        }
-    }, 2000, {httpStatus: 200, data: {id: '45dsfsd4f'}, error: {}});
-    console.log('END PROMISE')
-});
-
-console.log('MIDDLE')
-
-prom
-    .then(console.log)
-
-console.log('END')
+// Promise.resolve(10)
+//     .then(console.log)
+//     .catch(console.log)
+//     .finally(() => {
+//         console.log('finally 3');
+//     })
 
 
+// console.log('start')
+// async function f() { // f = async() => {}
+//     try {
+//         console.log('start F')
+//         // @ts-ignore
+//         const response = await new Promise((res, rej) => {
+//             res('!!!!!!!!')
+//         });
+//         console.log('MIDDLE')
+//     } catch (e) {
+//         console.log('!!!!! e', e)
+//     }
+// }
+// f().catch(console.log);
+// console.log('END')
+
+
+// function F<T>(arg: T) {
+//     if(typeof arg === 'string') {
+//         arg.
+//     } else if (typeof arg === 'number') {
+//         arg.
+//     }
+// }
 
 
 // just a plug
