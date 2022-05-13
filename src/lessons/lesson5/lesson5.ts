@@ -20,6 +20,261 @@ console.log('Lesson 5');
 // https://learn.javascript.ru/call-apply-decorators
 // https://medium.com/@stasonmars/%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%BE-%D0%BE-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%B0%D1%85-apply-call-%D0%B8-bind-%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D1%8B%D1%85-%D0%BA%D0%B0%D0%B6%D0%B4%D0%BE%D0%BC%D1%83-javascript-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D1%83-ddd5f9b06290
 
+// function/class, block code (anonymous block), conditional, loops, switch, try/catch/finally
+
+//console.log('this ', this);
+
+// function f() {
+//     console.log('this in function f ', this);
+// }
+//
+// f();
+
+
+// let obj = { name: 'Yo' };
+//
+// function f() {
+//     console.log('this in function f ', this);
+// }
+//
+// f();
+//
+// obj.f = f;
+// obj.f();
+
+
+// let obj = {
+//     name: 'Yo',
+//     f() {
+//         console.log('this in function f ', this);
+//     }
+// };
+//
+//
+// let globalVariable = obj.f;
+// globalVariable();
+
+// let obj = {
+//     name: 'Yo',
+//     f() {
+//         console.log('this in function f ', this);
+//     }
+// };
+//
+// let obj2 = { name: 'Hanna'};
+//
+// obj2.innerObj = { name: 'InnerName'};
+// obj2.innerObj.f = obj.f;
+// obj2.innerObj.f();
+
+
+// let obj = {
+//     name: 'Yo',
+//     f() {
+//         console.log('this in function f ', this);
+//         function innerF() {
+//             console.log('this in function innerF ', this);
+//         }
+//         innerF();
+//     }
+// };
+//
+// let obj2 = { name: 'Hanna'};
+//
+// obj2.innerObj = { name: 'InnerName'};
+// obj2.innerObj.f = obj.f;
+// obj2.innerObj.f();
+
+
+// let obj = {
+//     name: 'Yo',
+//     f() {
+//         console.log('this in function f ', this);
+//         function innerF() {
+//             console.log('this in function innerF ', this);
+//         }
+//         return innerF;
+//     }
+// };
+//
+// let obj2 = { name: 'Hanna'};
+// obj2.f = obj.f;
+// obj2.f()();
+
+// let obj = {
+//     name: 'Yo',
+//     arrow: () => {
+//         console.log('this in arrow ', this);
+//         return function() {
+//             console.log('this in function F ', this);
+//         }
+//     }
+// };
+//
+// let obj2 = { name: 'Hanna' };
+//
+// obj2.f = obj.arrow();
+// obj2.f();
+
+
+// let obj = {
+//     name: 'Yo',
+//     arrow: () => {
+//         console.log('this in arrow ', this);
+//         return function() {
+//             console.log('this in function F ', this);
+//         }
+//     }
+// };
+//
+// let obj2 = { name: 'Hanna' };
+//
+// obj2.f = obj.arrow;
+// obj2.f()();
+
+// let obj = {
+//     name: 'Yo',
+//     f() {
+//         console.log('this in function F ', this);
+//         return () => {
+//             console.log('this in arrow ', this);
+//         };
+//     }
+// };
+//
+// let obj2 = { name: 'Hanna' };
+//
+// obj2.a = obj.f();
+// obj2.a();
+// const outerFunc = obj2.a;
+// outerFunc();
+
+// let obj = {
+//     name: 'Yo',
+//     f() {
+//         setTimeout(function() {
+//             console.log('f', this);
+//         }, 500);
+//         setTimeout(() => {
+//             console.log('a', this);
+//         }, 500);
+//     }
+// };
+//
+// obj.f();
+
+
+// function setTimeout(callback, delay, ...args) {
+//     if (delay) {
+//         callback(...args);
+//     }
+// }
+
+
+
+
+// const arrow = () => {
+//     console.log('this in arrow ', this);
+// }
+//
+// arrow();
+
+
+// let obj = {
+//     name: 'Yo',
+// };
+//
+// const arrow = () => {
+//     console.log('this in arrow ', this);
+// }
+//
+// arrow();
+//
+// obj.a = arrow;
+// obj.a();
+
+// let obj = {
+//     name: 'Yo',
+//     arrow: () => {
+//         console.log('this in arrow ', this);
+//     }
+// };
+//
+// obj.arrow();
+
+
+// Bind
+// let obj = { name: 'Hanna' };
+// function f() {
+//     // @ts-ignore
+//     console.log(this.name);
+// }
+
+ //obj.name = 'Ivan';
+// obj = { name: 'Ivan' };
+
+// // @ts-ignore
+// obj.f = f;
+// // @ts-ignore
+// obj.f()
+
+// const bindedFunc = f.bind(obj);
+// bindedFunc();
+// console.log(obj)
+
+//f.bind({...obj})()
+
+// obj.name = 'Ivan';
+// obj = { name: 'Ivan' };
+
+
+
+
+// let obj = { name: 'Hanna' };
+// let obj2 = { name: 'Yo' };
+// let obj3 = { name: 'Bla' };
+// function f(a1: number, a2: number, a3: number) {
+//     // @ts-ignore
+//     console.log(this.name, a1, a2, a3);
+// }
+//
+// // @ts-ignore
+// //f.bind(obj, 50, 111, 100)(1000)
+//
+// // function multiply( callback: Function, num: number) {
+// //     return callback.bind(null, num);
+// // }
+// //
+// // function gf(num: number, num2: number) {
+// //     return num * num2;
+// // }
+// //
+// // const multiply50 = multiply(gf, 50);
+// //
+// // console.log(multiply50(0))
+// // console.log(multiply50(1))
+// // console.log(multiply50(2))
+// // console.log(multiply50(3))
+// // console.log(multiply50(4))
+//
+// //f.bind(obj, 100).bind(obj2, 200).bind(obj3, 500)()
+//
+// // Call
+// f.call(obj3, 50, 30);
+// // Apply
+// f.apply(obj2, [30, 40, 70]);
+
+function f() {
+    // console.log(arguments);
+    // @ts-ignore
+    //console.log([...arguments].filter(el => el > 60));
+    //console.log([].filter.call(arguments, el => el > 80));
+    console.log([].filter.apply(arguments, [(el) => el > 80]));
+}
+// @ts-ignore
+f(90, 10,80, 50, 80)
+
+
 
 // Task 01
 // Дан объект someObj, реализуйте функцию greeting и присвойте ее ключу объекта с аналогичным именем.
